@@ -9,7 +9,7 @@ export function HomeHeader() {
             <SafeAreaView className="px-4 flex-row items-center justify-between">
                 <View>
                     <Text className="text-gray-700 text-sm font-sans-regular">Olá, 👋</Text>
-                    <Text className="text-black-700 text-base font-sans-semibold">Matheus</Text>
+                    <Text className="text-black-700 text-base font-sans-semibold">Lucas Gustavo</Text>
                 </View>
 
                 <TouchableOpacity className="size-12 items-center justify-center">
