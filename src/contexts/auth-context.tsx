@@ -10,7 +10,7 @@ export const AuthContext = createContext({} as IAuthContextValue);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     return (
         <AuthContext.Provider
-            value={{ isLoggedIn: true, isLoading: false }}
+            value={{ isLoggedIn: false, isLoading: false }}
         >
             {children}
         </AuthContext.Provider>
