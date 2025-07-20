@@ -78,17 +78,18 @@ export default function SignIn() {
                             />
                         )}
                     />
-
-
-
-
                 </View>
 
                 <View className="flex-row gap-6">
                     <Button onPress={router.back} size="icon" color="gray">
                         <ArrowLeftIcon size={20} color={colors.black[700]} />
                     </Button>
-                    <Button className="flex-1" onPress={handleSubmit}>Entrar</Button>
+                    <Button
+                        className="flex-1" onPress={handleSubmit}
+                        loading={form.formState.isSubmitting}
+                    >
+                        Entrar
+                    </Button>
                 </View>
             </View>
         </AuthLayout>

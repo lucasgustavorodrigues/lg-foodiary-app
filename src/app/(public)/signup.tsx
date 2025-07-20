@@ -16,6 +16,7 @@ import { WeightStep } from '../../components/signup-steps/weight-step';
 import { signUpSchema } from '../../components/signup-steps/signup-schema';
 import { colors } from '../../styles/colors';
 import { useAuth } from '../../hooks/use-auth';
+import { isAxiosError } from 'axios';
 
 export default function SignUp() {
     const [currentStepIndex, setCurrentStepIndex] = useState(0);
@@ -102,6 +103,9 @@ export default function SignUp() {
                 }
             })
         } catch (error) {
+            if (isAxiosError(error)) {
+                console.log(error.response?.data)
+            }
             console.log(error)
             Alert.alert("Houve ao criar a conta")
         }
@@ -127,7 +131,10 @@ export default function SignUp() {
                     </Button>
 
                     {isLastStep ? (
-                        <Button className="flex-1" onPress={handleSubmit}>
+                        <Button
+                            className="flex-1" onPress={handleSubmit}
+                            loading={form.formState.isSubmitting}
+                        >
                             Criar conta
                         </Button>
                     ) : (
