@@ -10,20 +10,23 @@ import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
-import '../styles/global.css';
 import { AuthProvider } from "../contexts/auth-context";
 import { useAuth } from "../hooks/use-auth";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import '../styles/global.css';
 
-SplashScreen.preventAutoHideAsync()
+SplashScreen.preventAutoHideAsync();
+
+const queryClient = new QueryClient();
 
 export default function Layout() {
-
-
     return (
         <SafeAreaProvider>
-            <AuthProvider>
-                <RootLayout />
-            </AuthProvider>
+            <QueryClientProvider client={queryClient}>
+                <AuthProvider>
+                    <RootLayout />
+                </AuthProvider>
+            </QueryClientProvider>
         </SafeAreaProvider>
     )
 }

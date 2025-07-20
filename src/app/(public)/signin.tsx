@@ -1,7 +1,7 @@
 import { router } from 'expo-router';
 import { ArrowLeftIcon } from 'lucide-react-native';
 import React from 'react';
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { AuthLayout } from '../../components/auth-layout';
 import { Button } from '../../components/button';
 import { Input } from '../../components/input';
@@ -9,6 +9,7 @@ import { colors } from '../../styles/colors';
 import z from 'zod';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useAuth } from '../../hooks/use-auth';
 
 const schema = z.object({
     email: z.email("Informe um email valido"),
@@ -25,8 +26,15 @@ export default function SignIn() {
         }
     })
 
-    const handleSubmit = form.handleSubmit((formData) => {
-        console.log(JSON.stringify(formData, null, 2))
+    const { signIn } = useAuth();
+
+    const handleSubmit = form.handleSubmit(async (formData) => {
+        try {
+            await signIn(formData)
+        } catch (error) {
+            console.log(error)
+            Alert.alert("creds invalidas")
+        }
     })
 
     return (
