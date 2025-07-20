@@ -31,9 +31,23 @@ export default function RootLayout() {
     if (!loaded && !error) {
         return null;
     }
+
+    const isLoggedIn = false;
+
     return (
         <SafeAreaProvider>
-            <Stack screenOptions={{ headerShown: false }} />
+            <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Protected guard={isLoggedIn}>
+                    <Stack.Screen
+                        name="(private)"
+                    />
+                </Stack.Protected>
+                <Stack.Protected guard={!isLoggedIn}>
+                    <Stack.Screen
+                        name="(public)"
+                    />
+                </Stack.Protected>
+            </Stack>
         </SafeAreaProvider>
     )
 }
