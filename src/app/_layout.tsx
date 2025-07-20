@@ -1,7 +1,11 @@
 import { Stack } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-
-import { HostGrotesk_400Regular, HostGrotesk_500Medium, HostGrotesk_600SemiBold, HostGrotesk_700Bold } from "@expo-google-fonts/host-grotesk";
+import {
+    HostGrotesk_400Regular,
+    HostGrotesk_500Medium,
+    HostGrotesk_600SemiBold,
+    HostGrotesk_700Bold
+} from "@expo-google-fonts/host-grotesk";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
@@ -9,7 +13,6 @@ import { useEffect } from "react";
 import '../styles/global.css';
 
 SplashScreen.preventAutoHideAsync()
-
 
 export default function RootLayout() {
     const [loaded, error] = useFonts({

@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import { router, useLocalSearchParams } from "expo-router"
-import { Button } from "../../components/button";
+import { Button } from "../../../components/button";
 
 export default function MealDetails() {
     const { mealId } = useLocalSearchParams();
